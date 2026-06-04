@@ -39,6 +39,7 @@ body {
     justify-content: center;
     gap: 0.5rem;
     padding: 0.65rem 1.25rem;
+    min-width: 120px;
     background: #1a1a1a;
     color: #e0e0e0;
     border: 1px solid #333;
@@ -123,6 +124,7 @@ main {
     border: 1px solid #2a2a2a;
     display: grid;
     grid-template-columns: 400px 1fr;
+    align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
