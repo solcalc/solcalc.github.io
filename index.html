@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Games Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Casino Games Portfolio</h1>
+            <p class="tagline">A collection of my game development projects</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="games">
+            <!-- Game Card Example -->
+            <article class="game-card">
+                <div class="game-thumbnail">
+                    <img src="https://via.placeholder.com/400x250/1a1a1a/888888?text=Game+Thumbnail" alt="Game Name">
+                </div>
+                <div class="game-info">
+                    <h2 class="game-title">Lucky Pharoah's 3x3 Cluster Collect</h2>
+                    <p class="game-date">May 2026</p>
+                    <p class="game-description">
+                        This is a brief description of your game. Explain what makes it fun and unique!
+                    </p>
+                    <ul class="game-features">
+                        <li>Feature 1: Exciting gameplay mechanics</li>
+                        <li>Feature 2: Beautiful graphics and animations</li>
+                        <li>Feature 3: Progressive difficulty levels</li>
+                    </ul>
+                    <div class="game-links">
+                        <button class="btn btn-primary" onclick="openGame('game1')">Play Game</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Add more game cards here following the same structure -->
+            
+        </section>
+    </main>
+
+    <!-- Game Modal -->
+    <div id="gameModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeGame()">&times;</span>
+            <div id="gameContainer"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Casino Games Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const games = {
+            'game1': '<iframe frameborder="0" src="https://itch.io/embed-upload/17796371?color=333333" allowfullscreen="" width="470" height="772"><a href="https://solcalc.itch.io/lucky-pharoahs-3x3-cluster-collect">Play Lucky Pharoah\'s 3x3 Cluster Collect on itch.io</a></iframe>'
+        };
+
+        function openGame(gameId) {
+            const modal = document.getElementById('gameModal');
+            const container = document.getElementById('gameContainer');
+            
+            if (games[gameId]) {
+                container.innerHTML = games[gameId];
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeGame() {
+            const modal = document.getElementById('gameModal');
+            const container = document.getElementById('gameContainer');
+            
+            modal.style.display = 'none';
+            container.innerHTML = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('gameModal');
+            if (event.target === modal) {
+                closeGame();
+            }
+        }
+
+        // Close with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeGame();
+            }
+        });
+    </script>
+</body>
+</html>
