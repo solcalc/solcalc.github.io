@@ -32,8 +32,8 @@
         }
 
         .headshot {
-            width: 150px;
-            height: 150px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #333;
@@ -59,6 +59,7 @@
             padding: 2rem;
             border-radius: 12px;
             border: 1px solid #2a2a2a;
+            margin-bottom: 2rem;
         }
 
         .about-content p {
@@ -70,6 +71,84 @@
 
         .about-content p:last-child {
             margin-bottom: 0;
+        }
+
+        .section {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+            margin-bottom: 2rem;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #333;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .game-card {
+            background: #0f0f0f;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #2a2a2a;
+            transition: border-color 0.3s;
+        }
+
+        .game-card:hover {
+            border-color: #444;
+        }
+
+        .game-card h3 {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .game-card .company {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-category h3 {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            color: #b0b0b0;
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skill-category li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #666;
         }
 
         @media (max-width: 768px) {
@@ -90,17 +169,95 @@
             <img src="img/headshot.jpeg" alt="Mason McElroy" class="headshot">
             <div class="about-title">
                 <h1>Mason McElroy</h1>
-                <p class="subtitle">Game Developer & Designer</p>
+                <p class="subtitle">Casino Game Designer & Mathematician</p>
             </div>
         </div>
         
         <div class="about-content">
             <p>
-                Welcome to my portfolio! I'm a passionate game developer specializing in casino game prototypes and interactive experiences. With years of experience in the gaming industry, I've developed a keen eye for creating engaging mechanics and innovative gameplay features that captivate players and push the boundaries of traditional casino games.
+            I have over a decade of experience creating innovative casino games for land-based, online, and social platforms. I specialize in casino game design, advanced math modeling, and rapid prototyping.
             </p>
             <p>
-                My work focuses on rapid prototyping and experimentation, bringing creative concepts to life through code and design. From cluster pays to hold & spin mechanics, I love exploring new ways to make casino games more exciting and entertaining. This portfolio showcases a collection of prototypes I've built over the years—some evolved into production games, while others remain experimental testbeds for innovative ideas. Each project represents a unique approach to game design and a commitment to quality, creativity, and player engagement.
+            I love the casino gaming industry and always want to be a part of it. I'm always looking to learn more and push the boundaries of what's possible in game design and player engagement.
             </p>
+        </div>
+
+        <div class="section">
+            <h2>Notable Game Releases</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <h3>Dancing Drums Revolution</h3>
+                    <p class="company">Scientific Games</p>
+                </div>
+                <div class="game-card">
+                    <h3>Spartacus Super Colossal Reels</h3>
+                    <p class="company">Scientific Games</p>
+                </div>
+                <div class="game-card">
+                    <h3>Super Lit Vegas</h3>
+                    <p class="company">Ainsworth Game Technology</p>
+                </div>
+                <div class="game-card">
+                    <h3>March of the Zombies</h3>
+                    <p class="company">Ainsworth Game Technology</p>
+                </div>
+                <div class="game-card">
+                    <h3>Blazin' Hot Lucky Stars</h3>
+                    <p class="company">Ainsworth Game Technology</p>
+                </div>
+                <div class="game-card">
+                    <h3>Legendary Larry</h3>
+                    <p class="company">Penn Interactive</p>
+                </div>
+                <div class="game-card">
+                    <h3>Wuji Mines</h3>
+                    <p class="company">Penn Interactive</p>
+                </div>
+                <div class="game-card">
+                    <h3>Piggy Chef Showdown</h3>
+                    <p class="company">Penn Interactive</p>
+                </div>
+                <div class="game-card">
+                    <p>Many more including slots, table games, side bets, progressives, and arcade-style games!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Core Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li>Land-based casino games</li>
+                        <li>Online casino platforms</li>
+                        <li>Social casino games</li>
+                        <li>Rapid prototyping</li>
+                        <li>Creative gameplay mechanics</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Mathematics</h3>
+                    <ul>
+                        <li>RTP calculations</li>
+                        <li>Math modeling & simulations</li>
+                        <li>Monte Carlo simulation</li>
+                        <li>Optimal strategy derivation</li>
+                        <li>Regulatory compliance</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Programming & Tools</h3>
+                    <ul>
+                        <li>C++, C#, Python</li>
+                        <li>Raylib game framework</li>
+                        <li>Excel modeling</li>
+                        <li>Visual Studio & Git</li>
+                        <li>Claude Code & Copilot</li>
+                        <li>Light experience with Cocos, Godot, and Unity</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </body>
