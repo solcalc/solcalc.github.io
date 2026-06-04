@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casino Games Portfolio</title>
+    <title>Mason McElroy - Games Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -49,8 +49,8 @@
     <script>
         // Game embed codes
         const games = {
-            'game1': '<iframe frameborder="0" src="https://itch.io/embed-upload/17796371?color=333333" allowfullscreen="" width="470" height="772"><a href="https://solcalc.itch.io/lucky-pharoahs-3x3-cluster-collect">Play Lucky Pharoah\'s 3x3 Cluster Collect on itch.io</a></iframe>',
-            'game2': '<iframe frameborder="0" src="https://itch.io/embed-upload/17805863?color=333333" allowfullscreen="" width="470" height="772"><a href="https://solcalc.itch.io/triple-rocket-pots">Play Triple Rocket Pots on itch.io</a></iframe>'
+            'game1': '<iframe frameborder="0" src="https://itch.io/embed-upload/17796371?color=333333" allowfullscreen allow="autoplay; fullscreen; payment; pointer-lock" width="470" height="772"><a href="https://solcalc.itch.io/lucky-pharoahs-3x3-cluster-collect">Play Lucky Pharoah\'s 3x3 Cluster Collect on itch.io</a></iframe>',
+            'game2': '<iframe frameborder="0" src="https://itch.io/embed-upload/17805863?color=333333" allowfullscreen allow="autoplay; fullscreen; payment; pointer-lock" width="470" height="772"><a href="https://solcalc.itch.io/triple-rocket-pots">Play Triple Rocket Pots on itch.io</a></iframe>'
             // Add more game embeds here with unique IDs
         };
 
@@ -88,9 +88,15 @@
             const container = document.getElementById('gameContainer');
             
             if (games[gameId]) {
-                container.innerHTML = games[gameId];
+                // Add loading indicator
+                container.innerHTML = '<div style="text-align: center; padding: 50px; color: #fff;"><div style="font-size: 24px; margin-bottom: 20px;">Loading game...</div><div style="font-size: 14px; color: #888;">This may take a moment</div></div>';
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
+                
+                // Load iframe after a brief delay to show loading state
+                setTimeout(() => {
+                    container.innerHTML = games[gameId];
+                }, 100);
             }
         }
 
