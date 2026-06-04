@@ -30,33 +30,6 @@ A GitHub Pages website showcasing my casino game projects hosted on itch.io.
    - List your game features
    - Update the "Play Game" button onclick to use the correct game ID (e.g., `onclick="openGame('game2')"`)
 
-## Deployment to GitHub Pages
-
-1. **Create a repository:**
-   - Go to GitHub and create a new repository
-   - Name it `USERNAME.github.io` (replace USERNAME with your GitHub username)
-   - Make it public
-
-2. **Push your code:**
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial portfolio website"
-   git branch -M main
-   git remote add origin https://github.com/USERNAME/USERNAME.github.io.git
-   git push -u origin main
-   ```
-
-3. **Enable GitHub Pages:**
-   - Go to your repository settings
-   - Navigate to "Pages" in the left sidebar
-   - Under "Source", select "main" branch
-   - Click "Save"
-
-4. **Visit your site:**
-   - Your site will be live at `https://USERNAME.github.io`
-   - It may take a few minutes for the first deployment
-
 ## Customization Tips
 
 - **Colors**: Edit the gradient colors in `style.css` (search for `linear-gradient`)

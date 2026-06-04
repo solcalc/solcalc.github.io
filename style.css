@@ -66,8 +66,9 @@ main {
 
 .game-thumbnail {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 4 / 3;
     overflow: hidden;
+    background: #000;
 }
 
 .game-thumbnail img {
