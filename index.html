@@ -7,39 +7,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav class="top-nav">
+        <div class="container nav-content">
+            <button class="nav-btn" onclick="openAbout()">About Me</button>
+            <a href="https://www.linkedin.com/in/mason-mcelroy/" target="_blank" class="nav-btn linkedin-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                LinkedIn
+            </a>
+        </div>
+    </nav>
+
     <header>
         <div class="container">
-            <h1>Mason McElroy: Prototype Portfolio</h1>
+            <h1>Mason McElroy's Prototype Portfolio</h1>
             <p class="tagline">This is a collection of casino game prototypes that I've built over the years. Some ideas were moved into production, most are just ideas that I wanted to test out and bring to life.</p>
         </div>
     </header>
 
     <main class="container">
         <section id="games">
-            <!-- Game Card Example -->
-            <article class="game-card">
-                <div class="game-thumbnail">
-                    <img src="img/lucky-pharoah.png" alt="Lucky Pharoah's 3x3 Cluster Collect">
-                </div>
-                <div class="game-info">
-                    <h2 class="game-title">Lucky Pharoah's 3x3 Cluster Collect</h2>
-                    <p class="game-date">May 2026</p>
-                    <p class="game-description">
-                        A simple game 3x3 board that uses cluster pays. You don't see too many of those in video slots!
-                    </p>
-                    <ul class="game-features">
-                        <li>Uses cluster pays and 9 individually spinning reels.</li>
-                        <li>Trigger the COLLECT feature by getting the COLLECT symbol on the center reel.</li>
-                        <li>Hold & Spin feature that can go on forever. Collect jackpot tokens to win 4 different jackpot prizes.</li>
-                    </ul>
-                    <div class="game-links">
-                        <button class="btn btn-primary" onclick="openGame('game1')">Play Game</button>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Add more game cards here following the same structure -->
-            
+            <!-- Game cards will be loaded dynamically -->
         </section>
     </main>
 
@@ -58,9 +47,39 @@
     </footer>
 
     <script>
+        // Game embed codes
         const games = {
             'game1': '<iframe frameborder="0" src="https://itch.io/embed-upload/17796371?color=333333" allowfullscreen="" width="470" height="772"><a href="https://solcalc.itch.io/lucky-pharoahs-3x3-cluster-collect">Play Lucky Pharoah\'s 3x3 Cluster Collect on itch.io</a></iframe>'
+            // Add more game embeds here with unique IDs
         };
+
+        // List of game card HTML files to load
+        const gameCards = [
+            'games/lucky-pharoah.html'
+            // Add more game card files here
+        ];
+
+        // Load game cards from HTML files
+        async function loadGameCards() {
+            const gamesSection = document.getElementById('games');
+            
+            for (const cardFile of gameCards) {
+                try {
+                    const response = await fetch(cardFile);
+                    if (response.ok) {
+                        const html = await response.text();
+                        gamesSection.innerHTML += html;
+                    } else {
+                        console.error(`Failed to load ${cardFile}: ${response.status}`);
+                    }
+                } catch (error) {
+                    console.error(`Failed to load ${cardFile}:`, error);
+                }
+            }
+        }
+
+        // Load cards when page loads
+        document.addEventListener('DOMContentLoaded', loadGameCards);
 
         function openGame(gameId) {
             const modal = document.getElementById('gameModal');
@@ -80,6 +99,15 @@
             modal.style.display = 'none';
             container.innerHTML = '';
             document.body.style.overflow = 'auto';
+        }
+
+        function openAbout() {
+            const modal = document.getElementById('gameModal');
+            const container = document.getElementById('gameContainer');
+            
+            container.innerHTML = '<iframe src="about.html" style="width: 900px; max-width: 95vw; height: 600px; border: none; border-radius: 8px;"></iframe>';
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
         }
 
         // Close when clicking outside
