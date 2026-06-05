@@ -115,27 +115,29 @@
         // Load cards when page loads
         document.addEventListener('DOMContentLoaded', loadGameCards);
 
-        const GAME_NATIVE_WIDTH = 470;
-        const GAME_NATIVE_HEIGHT = 772; // 752px game + 20px itch.io widget
-
         function scaleGameIframe() {
             const wrapper = document.querySelector('.game-iframe-wrapper');
             const iframe = wrapper && wrapper.querySelector('iframe');
             if (!wrapper || !iframe) return;
 
+            const nativeWidth = parseInt(iframe.getAttribute('width'), 10);
+            const nativeHeight = parseInt(iframe.getAttribute('height'), 10);
+            if (!nativeWidth || !nativeHeight) return;
+
             // modal-content has 20px padding on each side
             const modalPadding = 40;
-            const availableWidth = Math.min(
-                window.innerWidth * 0.95 - modalPadding,
-                GAME_NATIVE_WIDTH
-            );
+            const availableWidth = window.innerWidth * 0.95 - modalPadding;
+            const availableHeight = window.innerHeight * 0.92;
 
-            if (availableWidth < GAME_NATIVE_WIDTH) {
-                const scale = availableWidth / GAME_NATIVE_WIDTH;
+            const scaleByWidth = availableWidth / nativeWidth;
+            const scaleByHeight = availableHeight / nativeHeight;
+            const scale = Math.min(scaleByWidth, scaleByHeight, 1); // never scale up
+
+            if (scale < 1) {
                 iframe.style.transformOrigin = 'top left';
                 iframe.style.transform = 'scale(' + scale + ')';
-                wrapper.style.width = availableWidth + 'px';
-                wrapper.style.height = (GAME_NATIVE_HEIGHT * scale) + 'px';
+                wrapper.style.width = (nativeWidth * scale) + 'px';
+                wrapper.style.height = (nativeHeight * scale) + 'px';
                 wrapper.style.overflow = 'hidden';
             } else {
                 iframe.style.transform = '';
