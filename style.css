@@ -140,10 +140,11 @@ main {
     width: 100%;
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    background: #000;
+    background: #1a1a1a;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-left: 1rem;
 }
 
 .game-thumbnail img {
