@@ -294,6 +294,12 @@ main {
     border-radius: 8px;
 }
 
+/* Wrapper used for mobile scaling via CSS transform */
+.game-iframe-wrapper {
+    display: block;
+    /* width/height set dynamically by JS on mobile; natural on desktop */
+}
+
 footer {
     background: #1a1a1a;
     padding: 1.5rem 0;
@@ -321,5 +327,8 @@ footer {
         font-size: 1.5rem;
     }
 
+    .modal-content {
+        margin: 1% auto;
+        padding: 12px;
     }
 }

@@ -88,6 +88,37 @@
         // Load cards when page loads
         document.addEventListener('DOMContentLoaded', loadGameCards);
 
+        const GAME_NATIVE_WIDTH = 470;
+        const GAME_NATIVE_HEIGHT = 772; // 752px game + 20px itch.io widget
+
+        function scaleGameIframe() {
+            const wrapper = document.querySelector('.game-iframe-wrapper');
+            const iframe = wrapper && wrapper.querySelector('iframe');
+            if (!wrapper || !iframe) return;
+
+            // modal-content has 20px padding on each side
+            const modalPadding = 40;
+            const availableWidth = Math.min(
+                window.innerWidth * 0.95 - modalPadding,
+                GAME_NATIVE_WIDTH
+            );
+
+            if (availableWidth < GAME_NATIVE_WIDTH) {
+                const scale = availableWidth / GAME_NATIVE_WIDTH;
+                iframe.style.transformOrigin = 'top left';
+                iframe.style.transform = 'scale(' + scale + ')';
+                wrapper.style.width = availableWidth + 'px';
+                wrapper.style.height = (GAME_NATIVE_HEIGHT * scale) + 'px';
+                wrapper.style.overflow = 'hidden';
+            } else {
+                iframe.style.transform = '';
+                iframe.style.transformOrigin = '';
+                wrapper.style.width = '';
+                wrapper.style.height = '';
+                wrapper.style.overflow = '';
+            }
+        }
+
         function openGame(gameId) {
             const modal = document.getElementById('gameModal');
             const container = document.getElementById('gameContainer');
@@ -100,7 +131,8 @@
                 
                 // Load iframe after a brief delay to show loading state
                 setTimeout(() => {
-                    container.innerHTML = games[gameId];
+                    container.innerHTML = '<div class="game-iframe-wrapper">' + games[gameId] + '</div>';
+                    scaleGameIframe();
                 }, 100);
             }
         }
@@ -137,6 +169,9 @@
                 closeGame();
             }
         });
+
+        // Re-scale on orientation change / resize
+        window.addEventListener('resize', scaleGameIframe);
     </script>
 </body>
 </html>
