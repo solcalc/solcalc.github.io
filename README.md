@@ -65,9 +65,28 @@ const games = {
 };
 ```
 
-**Make sure to include these attributes:**
-- `allowfullscreen` - enables fullscreen mode
-- `allow="autoplay; fullscreen; payment; pointer-lock"` - required permissions
+**⚠️ Required customization to the default itch.io embed code:**
+
+The default itch.io embed code only includes `allowfullscreen=""`. You must also add the `allow` attribute for audio, fullscreen, and pointer lock to work correctly in modern browsers:
+
+| Default itch.io code | What to use here |
+|---|---|
+| `allowfullscreen=""` | `allowfullscreen allow="autoplay; fullscreen; payment; pointer-lock"` |
+
+Full example — change this default:
+```html
+<iframe frameborder="0" src="https://itch.io/embed-upload/ID?color=333333" allowfullscreen="" width="470" height="772">...</iframe>
+```
+To this:
+```html
+<iframe frameborder="0" src="https://itch.io/embed-upload/ID?color=333333" allowfullscreen allow="autoplay; fullscreen; payment; pointer-lock" width="470" height="772">...</iframe>
+```
+
+The `allow` attribute is required for:
+- `autoplay` — game audio plays without user interaction
+- `fullscreen` — fullscreen mode works in all browsers
+- `pointer-lock` — mouse cursor can be locked to the game canvas
+- `payment` — itch.io payment flows (if used)
 
 ### 4. Register the game card in index.html
 
