@@ -204,6 +204,8 @@ body {
     aspect-ratio: 4 / 3;
     object-fit: cover;
     display: block;
+    image-rendering: auto;
+    image-rendering: -webkit-optimize-contrast;
     transition: filter 0.15s;
 }
 
