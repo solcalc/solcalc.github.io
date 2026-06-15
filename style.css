@@ -127,7 +127,6 @@ body {
     color: var(--text-mid);
     max-width: 480px;
     line-height: 1.65;
-    margin-bottom: 2.5rem;
 }
 
 .hero-stats {
