@@ -82,6 +82,11 @@ body {
     color: var(--text);
 }
 
+.nav-btn:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 2px;
+}
+
 /* ── HERO ── */
 .hero {
     max-width: 900px;
@@ -288,6 +293,11 @@ body {
     opacity: 0.85;
 }
 
+.play-btn:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 2px;
+}
+
 .game-date {
     font-size: 0.6rem;
     color: var(--text-dim);
@@ -346,6 +356,12 @@ body {
     border-color: var(--border-strong);
 }
 
+.close:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 2px;
+    border-color: var(--border-strong);
+}
+
 #gameContainer {
     display: flex;
     justify-content: center;
@@ -367,11 +383,15 @@ footer {
     text-align: center;
     color: var(--text-dim);
     font-size: 0.75rem;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
     body { padding-top: 52px; }
+
+    .top-nav { height: 52px; }
 
     .nav-content { padding: 0 1rem; }
 
@@ -392,5 +412,12 @@ footer {
     .modal-content {
         margin: 1% auto;
         padding: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
     }
 }
