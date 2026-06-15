@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Mockup — Charcoal + White</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg:       #111214;
+    --surface:  #18191C;
+    --border:   rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.15);
+    --text:     #ffffff;
+    --text-mid: rgba(255,255,255,0.5);
+    --text-dim: rgba(255,255,255,0.25);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    color: var(--text-mid);
+    text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 0.75rem; }
+  .nav-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-decoration: none;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--border);
+    transition: all 0.15s;
+    cursor: pointer;
+    background: none;
+  }
+  .nav-btn:hover { border-color: var(--border-strong); color: var(--text); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 5rem 2.5rem 4rem;
+    border-bottom: 1px solid var(--border);
+    max-width: 900px;
+  }
+  .hero-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+  .hero-rule {
+    width: 40px;
+    height: 2px;
+    background: var(--text);
+    margin-bottom: 1.5rem;
+  }
+  .hero-tagline {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text-mid);
+    max-width: 480px;
+    line-height: 1.65;
+    margin-bottom: 2.5rem;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+  }
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--text);
+  }
+  .stat-label {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 0.2rem;
+  }
+
+  /* ── GAME LIST ── */
+  .games {
+    max-width: 900px;
+    padding: 0 2.5rem 4rem;
+  }
+  .games-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 1.75rem 0 1rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+  }
+  .games-label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  .games-count {
+    font-size: 0.6rem;
+    color: var(--text-dim);
+  }
+
+  .game-card {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  .game-card:hover { background: var(--surface); }
+
+  .game-thumb {
+    border-right: 1px solid var(--border);
+    padding: 1.25rem 1.25rem 1.25rem 0;
+    display: flex;
+    align-items: center;
+  }
+  .thumb-box {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Simulated screenshot content */
+  .thumb-box::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+      rgba(255,255,255,0.03) 25%, transparent 25%,
+      transparent 50%, rgba(255,255,255,0.03) 50%,
+      rgba(255,255,255,0.03) 75%, transparent 75%);
+    background-size: 20px 20px;
+  }
+  .thumb-placeholder {
+    font-size: 0.5rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  .game-info {
+    padding: 1.5rem 1.5rem 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .game-index {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .game-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+  .game-desc {
+    font-size: 0.78rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+  .game-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+  .tag {
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    padding: 2px 7px;
+  }
+  .game-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.25rem;
+  }
+  .play-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--text);
+    border: none;
+    padding: 0.45rem 1rem;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .play-btn:hover { opacity: 0.85; }
+  .game-date {
+    font-size: 0.6rem;
+    color: var(--text-dim);
+  }
+
+  .caption {
+    padding: 1rem 2.5rem;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border);
+    letter-spacing: 0.03em;
+    margin-top: 1rem;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Solcalc</span>
+  <div class="nav-links">
+    <button class="nav-btn">About</button>
+    <button class="nav-btn">LinkedIn ↗</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-label">Prototype Portfolio</div>
+  <h1>Mason<br>McElroy</h1>
+  <div class="hero-rule"></div>
+  <p class="hero-tagline">Casino game designer and mathematician. I design the mechanics, model the math, and build working playable prototypes. All three.</p>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">11</div>
+      <div class="stat-label">Playable Prototypes</div>
+    </div>
+    <div>
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div>
+      <div class="stat-num">Real</div>
+      <div class="stat-label">Game Math</div>
+    </div>
+  </div>
+</div>
+
+<div class="games">
+  <div class="games-header">
+    <span class="games-label">Prototype Collection</span>
+    <span class="games-count">11 games</span>
+  </div>
+
+  <div class="game-card">
+    <div class="game-thumb">
+      <div class="thumb-box">
+        <span class="thumb-placeholder">Screenshot</span>
+      </div>
+    </div>
+    <div class="game-info">
+      <div class="game-index">001 · June 2026</div>
+      <div class="game-title">Lucky Pharoah's 3×3 Cluster Collect</div>
+      <div class="game-desc">A 3×3 board with cluster pays — a rare mechanic in video slots. Nine individually spinning reels with a center-reel collect trigger and an infinite hold & spin.</div>
+      <div class="game-tags">
+        <span class="tag">Slot</span>
+        <span class="tag">Cluster Pays</span>
+        <span class="tag">Hold & Spin</span>
+        <span class="tag">4 Jackpot Tiers</span>
+      </div>
+      <div class="game-actions">
+        <button class="play-btn">Play Game</button>
+        <span class="game-date">Prototype</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="game-card" style="opacity:0.6;">
+    <div class="game-thumb">
+      <div class="thumb-box">
+        <span class="thumb-placeholder">Screenshot</span>
+      </div>
+    </div>
+    <div class="game-info">
+      <div class="game-index">002 · May 2026</div>
+      <div class="game-title">Triple Rocket Pots</div>
+      <div class="game-desc">Community bonus that fires simultaneously for all players. Hold & spin mechanic with 4 progressive jackpot tiers.</div>
+      <div class="game-tags">
+        <span class="tag">Slot</span>
+        <span class="tag">Hold & Spin</span>
+        <span class="tag">Community Bonus</span>
+      </div>
+      <div class="game-actions">
+        <button class="play-btn">Play Game</button>
+        <span class="game-date">Prototype</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="game-card" style="opacity:0.35;">
+    <div class="game-thumb">
+      <div class="thumb-box">
+        <span class="thumb-placeholder">Screenshot</span>
+      </div>
+    </div>
+    <div class="game-info">
+      <div class="game-index">003 · April 2026</div>
+      <div class="game-title">Slugfest</div>
+      <div class="game-desc">Arcade-style skill game with a betting layer.</div>
+      <div class="game-tags">
+        <span class="tag">Arcade</span>
+        <span class="tag">Skill</span>
+      </div>
+      <div class="game-actions">
+        <button class="play-btn">Play Game</button>
+        <span class="game-date">Prototype</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="caption">
+  Fonts: <strong style="color:rgba(255,255,255,0.4)">Barlow Condensed ExtraBold</strong> (headings + stats) · <strong style="color:rgba(255,255,255,0.4)">Inter</strong> (body + tags).
+  The faded cards show how the list recedes — real thumbnails will anchor each row.
+</div>
+
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Mockup — Hero + Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0C1410;
+    color: #d8e8d0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #1e3022;
+    background: #0a1109;
+  }
+  nav a {
+    font-size: 0.8rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #8ab88e;
+    text-decoration: none;
+    padding: 0.45rem 1rem;
+    border: 1px solid #2a4a2e;
+    transition: all 0.2s;
+  }
+  nav a:hover { border-color: #b8942a; color: #b8942a; }
+  nav .linkedin {
+    background: #0077b5;
+    color: #fff;
+    border-color: #0077b5;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 4rem 2rem 3.5rem;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid #1e3022;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 0%, #1a3820 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #b8942a;
+    margin-bottom: 1.25rem;
+  }
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: ' ✦ ';
+    opacity: 0.6;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 700;
+    color: #f0ead8;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+  .hero-rule {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #b8942a, transparent);
+    margin: 1.25rem auto;
+  }
+  .hero-tagline {
+    font-size: 0.95rem;
+    color: #8ab88e;
+    max-width: 500px;
+    margin: 0 auto 1.75rem;
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .hero-stats {
+    display: inline-flex;
+    gap: 0;
+    border: 1px solid #2a4a2e;
+    margin-bottom: 2rem;
+  }
+  .stat {
+    padding: 0.6rem 1.5rem;
+    border-right: 1px solid #2a4a2e;
+    text-align: center;
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #b8942a;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #4a7a4e;
+    margin-top: 0.2rem;
+  }
+  .hero-scroll {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #3a6a3e;
+  }
+
+  /* ── GAME CARD ── */
+  .games-section {
+    padding: 2.5rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #b8942a;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #1e3022;
+  }
+
+  .game-card {
+    background: #0f1d12;
+    border: 1px solid #1e3022;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.3s;
+  }
+  .game-card:hover { border-color: #b8942a; }
+
+  .game-thumb {
+    aspect-ratio: 4/3;
+    background: #0a1509;
+    border-right: 1px solid #1e3022;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Simulated screenshot placeholder */
+  .game-thumb-inner {
+    width: 85%;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #1a3020 0%, #0f1d12 50%, #1a2a10 100%);
+    border: 1px solid #2a4a2e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+  }
+  .thumb-icon { font-size: 1.5rem; opacity: 0.4; }
+  .thumb-label { font-size: 0.45rem; color: #3a6a3e; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .game-info {
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .game-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+  }
+  .game-tag {
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0C1410;
+    background: #b8942a;
+    padding: 2px 7px;
+  }
+  .game-tag.outline {
+    background: transparent;
+    color: #4a7a4e;
+    border: 1px solid #2a4a2e;
+  }
+  .game-date { font-size: 0.55rem; color: #3a6a3e; margin-left: auto; }
+
+  .game-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #f0ead8;
+    line-height: 1.15;
+    margin-bottom: 0.6rem;
+  }
+  .game-desc {
+    font-size: 0.8rem;
+    color: #6a9a6e;
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+  .game-features {
+    list-style: none;
+    margin-bottom: 1.25rem;
+  }
+  .game-features li {
+    font-size: 0.75rem;
+    color: #7aaa7e;
+    padding: 0.25rem 0 0.25rem 1.1rem;
+    position: relative;
+    line-height: 1.4;
+  }
+  .game-features li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: #b8942a;
+    font-size: 0.5rem;
+    top: 0.35rem;
+  }
+  .play-btn {
+    display: inline-block;
+    background: #b8942a;
+    color: #0C1410;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.4rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+  .play-btn:hover { background: #cda83a; }
+
+  /* ── SECOND CARD (shows variety) ── */
+  .game-card-2 {
+    background: #0f1d12;
+    border: 1px solid #1e3022;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    opacity: 0.65;
+  }
+
+  /* ── CAPTION ── */
+  .caption {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    border-top: 1px solid #1e3022;
+    font-size: 0.7rem;
+    color: #3a6a3e;
+    letter-spacing: 0.05em;
+  }
+  .caption strong { color: #b8942a; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#">About Me</a>
+  <a href="#" class="linkedin">LinkedIn</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Prototype Portfolio</div>
+  <h1>Mason McElroy</h1>
+  <div class="hero-rule"></div>
+  <p class="hero-tagline">Casino game designer & mathematician. I design the mechanics, model the math, and build working prototypes — all three.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">11</div>
+      <div class="stat-label">Playable Prototypes</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Years in the Industry</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Real</div>
+      <div class="stat-label">Game Math</div>
+    </div>
+  </div>
+  <div class="hero-scroll">↓ Browse the collection</div>
+</div>
+
+<div class="games-section">
+  <div class="section-label">Prototype Collection</div>
+
+  <div class="game-card">
+    <div class="game-thumb">
+      <div class="game-thumb-inner">
+        <div class="thumb-icon">🎰</div>
+        <div class="thumb-label">Lucky Pharaoh · 4:3</div>
+      </div>
+    </div>
+    <div class="game-info">
+      <div class="game-meta">
+        <span class="game-tag">Slot</span>
+        <span class="game-tag outline">Cluster Pays</span>
+        <span class="game-tag outline">Hold & Spin</span>
+        <span class="game-date">June 2026</span>
+      </div>
+      <h2 class="game-title">Lucky Pharoah's 3×3 Cluster Collect</h2>
+      <p class="game-desc">A 3×3 board using cluster pays — a rare mechanic in video slots. Nine individually spinning reels with a collect feature and an infinite hold & spin.</p>
+      <ul class="game-features">
+        <li>Cluster pays on 9 individually spinning reels</li>
+        <li>COLLECT feature triggers from the center reel</li>
+        <li>Hold & Spin with 4 progressive jackpot tiers</li>
+      </ul>
+      <button class="play-btn">Play Game</button>
+    </div>
+  </div>
+
+  <div class="game-card game-card-2">
+    <div class="game-thumb">
+      <div class="game-thumb-inner">
+        <div class="thumb-icon">🚀</div>
+        <div class="thumb-label">Triple Rocket · 4:3</div>
+      </div>
+    </div>
+    <div class="game-info">
+      <div class="game-meta">
+        <span class="game-tag">Slot</span>
+        <span class="game-tag outline">Hold & Spin</span>
+        <span class="game-tag outline">Community Bonus</span>
+        <span class="game-date">May 2026</span>
+      </div>
+      <h2 class="game-title">Triple Rocket Pots</h2>
+      <p class="game-desc">A community bonus that fires for all players at once. Hold & spin with 4 jackpot tiers.</p>
+      <button class="play-btn">Play Game</button>
+    </div>
+  </div>
+</div>
+
+<div class="caption">
+  This is a mockup — fonts are <strong>Cormorant Garamond</strong> (headings) + <strong>DM Sans</strong> (body). The faded second card gives a sense of how the list will feel.
+</div>
+
+</body>
+</html>
