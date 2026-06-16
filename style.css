@@ -10,6 +10,10 @@
     --text-dim:      rgba(255,255,255,0.25);
 }
 
+html {
+    font-size: 112.5%;
+}
+
 * {
     margin: 0;
     padding: 0;
