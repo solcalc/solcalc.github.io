@@ -28,7 +28,7 @@
         <div class="games-container">
             <div class="games-header">
                 <span class="games-label">Prototype Collection</span>
-                <span class="games-count">11 games</span>
+                <span class="games-count">12 games</span>
             </div>
             <section id="games">
                 <!-- Game cards loaded dynamically -->
@@ -51,6 +51,8 @@
     <script>
         // Game embed codes
         const games = {
+            'esp32-video-poker': '<iframe width="540" height="960" src="https://www.youtube.com/embed/GnyX0_ySZEw" title="ESP32 Video Poker" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+
             'sketch-n-win': '<iframe frameborder="0" src="https://itch.io/embed-upload/18663065?color=333333" allowfullscreen="" width="560" height="770"><a href="https://solcalc.itch.io/sketch-n-win">Play Sketch &amp; Win on itch.io</a></iframe>',
 
             'lucky-pharoah': '<iframe frameborder="0" src="https://itch.io/embed-upload/17804444?color=333333" allowfullscreen allow="autoplay; fullscreen; payment; pointer-lock" width="470" height="772"><a href="https://solcalc.itch.io/lucky-pharoahs-3x3-cluster-collect">Play Lucky Pharoah\'s 3x3 Cluster Collect on itch.io</a></iframe>',
@@ -74,11 +76,13 @@
             'anubis': '<iframe frameborder="0" src="https://itch.io/embed-upload/17817450?color=333333" allowfullscreen="" width="400" height="820"><a href="https://solcalc.itch.io/anubis">Play Anubis on itch.io</a></iframe>',
 
             '3x-pot-casino-frenzy': '<iframe frameborder="0" src="https://itch.io/embed-upload/17942993?color=333333" allowfullscreen="" width="470" height="772"><a href="https://solcalc.itch.io/3x-pot-casino-frenzy">Play 3x-pot-casino-frenzy on itch.io</a></iframe>',
+
             // Add more game embeds here with unique IDs
         };
 
         // List of game card HTML files to load
         const gameCards = [
+            'games/esp32-video-poker.html',
             'games/sketch-n-win.html',
             'games/3x-pot-casino-frenzy.html',
             'games/lucky-pharoah.html',
